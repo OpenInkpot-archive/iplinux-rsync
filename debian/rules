@@ -79,12 +79,12 @@ binary-arch:	checkroot build
 	$(INSTALL_DIR) 	debian/tmp \
 			debian/tmp/DEBIAN \
 			debian/tmp/usr/bin
-			# debian/tmp/usr/lib/debian-test/tests
 ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 	$(MAKE) --directory=debian/buildtree install-strip prefix=`pwd`/debian/tmp/usr exec_prefix=`pwd`/debian/tmp/usr
 else
 	$(MAKE) --directory=debian/buildtree install prefix=`pwd`/debian/tmp/usr exec_prefix=`pwd`/debian/tmp/usr
 endif
+	rm -rf debian/tmp/usr/share
 	(cd debian/tmp; find usr -type f -print0 | xargs -0 md5sum) > debian/tmp/DEBIAN/md5sums
 	dpkg-shlibdeps debian/tmp/usr/bin/$(BINS)
 	dpkg-gencontrol -isp

@@ -2,8 +2,8 @@ Source: rsync
 Section: core
 Priority: optional
 Maintainer: Mikhail Gusarov <dottedmag@dottedmag.net>
-Build-Depends: autoconf, libpopt-dev
-XCS-Cross-Host-Build-Depends: autoconf
+Build-Depends: autoconf, libpopt-dev, debhelper (>= 7)
+XCS-Cross-Host-Build-Depends: autoconf, debhelper (>= 7)
 XCS-Cross-Build-Depends: libpopt-dev
 Standards-Version: 3.8.0
 
